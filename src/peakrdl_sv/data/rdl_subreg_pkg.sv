@@ -1,4 +1,5 @@
 // Copyright Nu Quantum Ltd
+// Copyright 2026 Shareef Jalloq
 // SPDX-License-Identifier: MIT
 
 package rdl_subreg_pkg;

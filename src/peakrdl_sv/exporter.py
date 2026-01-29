@@ -5,7 +5,7 @@ import argparse
 from pathlib import Path
 
 from mako.template import Template
-from pkg_resources import resource_filename
+from importlib.resources import files
 from systemrdl.node import AddrmapNode
 from systemrdl.node import RootNode
 
@@ -40,13 +40,13 @@ class VerilogExporterBase:
         reg_top_path = outpath / f"{node.inst_name.lower()}_reg_top.sv"
 
         reg_top_tpl = Template(
-            filename=resource_filename("peakrdl_sv", "reg_top.sv.tpl"),
+            filename=str(files("peakrdl_sv").joinpath("reg_top.sv.tpl")),
         )
         with reg_top_path.open("w") as f:
             f.write(reg_top_tpl.render(block=self.listener.top_node))
 
         reg_pkg_tpl = Template(
-            filename=resource_filename("peakrdl_sv", "reg_pkg.sv.tpl"),
+            filename=str(files("peakrdl_sv").joinpath("reg_pkg.sv.tpl")),
         )
         with reg_pkg_path.open("w") as f:
             f.write(reg_pkg_tpl.render(block=self.listener.top_node))
@@ -79,7 +79,7 @@ class PythonExporterBase:
         reg_map_path = outpath / f"{node.inst_name.lower()}_reg_map.py"
 
         reg_map_tpl = Template(
-            filename=resource_filename("peakrdl_sv", "reg_map.py.tpl"),
+            filename=str(files("peakrdl_sv").joinpath("reg_map.py.tpl")),
         )
         with reg_map_path.open("w") as f:
             f.write(reg_map_tpl.render(block=self.listener.top_node))

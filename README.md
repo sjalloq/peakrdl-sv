@@ -92,7 +92,7 @@ The hierarchy of the generated RTL is shown below:
 ## Installation
 
 ```
-$ pip install git+https://github.com/nuquantum/peakrdl-sv
+$ pip install git+https://github.com/sjalloq/peakrdl-sv
 ```
 
 ## Usage

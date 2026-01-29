@@ -2,11 +2,9 @@ DIR=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 VENV=.venv
 
 if [[ ! -e $VENV ]]; then
-    python3 -m venv $VENV
+    uv venv $VENV
     source $VENV/bin/activate
-    pip install -U pip wheel
-    pip install -r requirements.txt
-    pip install -e .
+    uv pip install -e ".[dev]"
 else
     source $VENV/bin/activate
 fi

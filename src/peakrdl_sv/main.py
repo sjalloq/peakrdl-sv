@@ -6,7 +6,7 @@ import logging
 import shutil
 from pathlib import Path
 
-from pkg_resources import resource_filename
+from importlib.resources import files
 from systemrdl import RDLCompiler
 
 from peakrdl_sv.exporter import VerilogExporterBase
@@ -42,7 +42,7 @@ def export(args):
 def install(args):
     outpath = create_output_directory(args.output)
     logging.debug("installing SV to " + str(outpath))
-    data = Path(resource_filename("peakrdl_sv", "data"))
+    data = Path(str(files("peakrdl_sv").joinpath("data")))
     for src in data.glob("*.sv"):
         dst = outpath / src.name
         logger.debug(f"copying {src} to {dst}")

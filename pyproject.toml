@@ -1,7 +1,7 @@
 [project]
 name = "peakrdl-sv"
 description = "A SystemRDL exporter for SystemVerilog "
-authors = [{ name = "Shareef Jalloq", email = "shareef@nu-quantum.com" }]
+authors = [{ name = "Shareef Jalloq" }]
 readme = "README.md"
 keywords = [
     "SystemRDL",
@@ -19,8 +19,10 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
 ]
 dependencies = ["systemrdl-compiler", "peakrdl", "mako"]
-# dynamic = ["version"]
-version = "0.0.1"
+dynamic = ["version"]
+
+[project.optional-dependencies]
+dev = ["pre-commit", "numpy", "cocotb", "cocotb-bus", "pytest"]
 
 [build-system]
 requires = ["setuptools", "wheel", "setuptools_scm[toml]>=6.0"]
@@ -31,6 +33,8 @@ where = ["src"]
 
 [project.scripts]
 sv-exporter = "peakrdl_sv.main:main"
+
+[tool.setuptools_scm]
 
 [tool.black]
 line-length = 88
